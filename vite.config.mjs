@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/',
+  base: '/goit-react-hw-08-phonebook/',
   build: {
     outDir: 'build',
   },

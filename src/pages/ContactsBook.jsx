@@ -8,12 +8,12 @@ import {
   fetchContacts,
   deleteContact,
   addContact,
-} from '../redux/operations/operations';
+} from '../redux/operations/contacts.operation';
 import {
   selectContacts,
   selectError,
   selectLoading,
-} from '../redux/selectors/selectors';
+} from '../redux/selectors/contacts.selector';
 
 export default function ContactsBook() {
   const dispatch = useDispatch();
