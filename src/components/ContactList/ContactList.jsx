@@ -11,7 +11,9 @@ const ContactList = ({ filter, contacts, onDelete }) => {
           )
           .map((contact) => (
             <li key={contact.id} className={styles.li}>
-              {contact.name}: {contact.number}
+              <span className={styles.span}>
+                {contact.name} : <b>{contact.number}</b>
+              </span>
               <button
                 className={styles.button}
                 type="submit"

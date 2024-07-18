@@ -14,6 +14,47 @@ import {
   selectError,
   selectLoading,
 } from '../redux/selectors/contacts.selector';
+import workMan from '../images/man-work.jpg';
+
+const styles = {
+  container: {
+    minHeight: 'calc(100vh - 600px)',
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: 'space-around',
+    gap: '30px',
+    width: '100%',
+    backgroundColor: 'rgb(94, 79, 70, 0.1)',
+    boxShadow: 'rgba(94, 79, 70, 0.2) 0px 4px 15px 4px',
+    // backgroundImage: `url(${workplaceImage})`,
+    // backgroundRepeat: 'no-repeat',
+    // backgroundPosition: 'center',
+    // backgroundSize: 'cover',
+    height: '100vh',
+    paddingTop: '15px',
+  },
+
+  container1: {
+    backgroundImage: `url(${workMan})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    width: '50%',
+    height: '100%',
+  },
+
+  container2: {
+    width: '50%',
+  },
+  titlesmall: {
+    fontWeight: 500,
+    fontSize: 24,
+    color: '#3f342b',
+    textAlign: 'center',
+    fontFamily: `'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS',
+    sans-serif`,
+  },
+};
 
 export default function ContactsBook() {
   const dispatch = useDispatch();
@@ -59,16 +100,21 @@ export default function ContactsBook() {
   }
 
   return (
-    <div>
-      <h2 style={{ marginLeft: '30px' }}>Phonebook</h2>
-      <ContactForm onSubmit={handleSubmit} />
-      <h2 style={{ margin: '30px 0 0 30px' }}>Contacts</h2>
-      <Filter filter={filter} onChange={handleChange} />
-      <ContactList
-        filter={filter}
-        contacts={contacts}
-        onDelete={handleDelete}
-      />
+    <div style={styles.container}>
+      <div style={styles.container1}>
+        <h2 style={styles.titlesmall}>Phonebook</h2>
+        <ContactForm onSubmit={handleSubmit} />
+      </div>
+      <div style={styles.container2}>
+        <h2 style={styles.titlesmall}>Contacts</h2>
+        <Filter filter={filter} onChange={handleChange} />
+        <ContactList
+          filter={filter}
+          contacts={contacts}
+          onDelete={handleDelete}
+        />
+      </div>
+
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
     </div>

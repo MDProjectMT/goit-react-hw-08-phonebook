@@ -1,8 +1,7 @@
-import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
+import scss from './Filter.module.scss';
 
 export default function Filter({ filter, onChange }) {
-  const searchId = nanoid();
   return (
     <>
       <div
@@ -11,13 +10,12 @@ export default function Filter({ filter, onChange }) {
           flexDirection: 'column',
           width: '340px',
           padding: '15px 0 0 0',
-          marginLeft: '30px',
           gap: '10px',
         }}
       >
-        <label htmlFor={searchId}>Find contacts by name</label>
+        <label className={scss.label}>Find contacts by name</label>
         <input
-          id={searchId}
+          className={scss.input}
           value={filter}
           type="text"
           name="filter"

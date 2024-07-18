@@ -12,17 +12,11 @@ export const Navigation = () => {
       {isLoggedIn && (
         <NavLink
           className={scss.link}
-          to="/goit-react-hw-08-phonebook/contacts"
+          to="/goit-react-hw-08-phonebook/contactlist"
         >
-          Contacts List
+          Contact List
         </NavLink>
       )}
     </nav>
   );
 };
-// <NavLink className={scss.link} to="/goit-react-hw-08-phonebook/login">
-//   Log in
-// </NavLink>
-// <NavLink className={scss.link} to="/goit-react-hw-08-phonebook/register">
-//   Register
-// </NavLink>

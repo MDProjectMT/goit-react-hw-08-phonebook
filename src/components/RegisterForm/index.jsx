@@ -12,7 +12,7 @@ export const RegisterForm = () => {
     dispatch(
       register({
         name: name.value,
-        emial: email.value,
+        email: email.value,
         password: password.value,
       })
     );
