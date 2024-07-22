@@ -4,11 +4,22 @@ import { clearAuthHeader, client, setAuthHeader } from '../../library/client';
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
+    const { password } = credentials;
+    if (password.length < 6) {
+      return window.alert('Password is too short');
+    }
     try {
       const res = await client.post('/users/signup', credentials);
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
+      if (error.response) {
+        if (error.response.status === 400) {
+          return thunkAPI.rejectWithValue(
+            'Użytkownik o takim e-mailu już istnieje'
+          );
+        }
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -17,6 +28,10 @@ export const register = createAsyncThunk(
 export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
+    const { password } = credentials;
+    if (password.length < 6) {
+      return window.alert('Password is too short');
+    }
     try {
       const res = await client.post('/users/login', credentials);
       setAuthHeader(res.data.token);
